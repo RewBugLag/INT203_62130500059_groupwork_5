@@ -24,8 +24,8 @@
         <h1 class="text-xl">Liked ({{countHeart}})</h1>
 
         <photo-search :search="search" @toggle-search="toggleSearch" @search-picture="searchPicture"></photo-search>
-        <!-- <photo-view :fullImage="fullImage"></photo-view> -->
-        <photo-item :conts="conts" :fullImage="fullImage" @toggle-heart="toggleHeart"></photo-item>
+        <photo-view :conts="conts" :fullimage="fullimage" :index="index" @toggle-fullimage="toggleFullImage"></photo-view>
+        <photo-item :conts="conts" :fullimage="fullimage" @toggle-heart="toggleHeart" @set-index="setIndex" @toggle-fullimage="toggleFullImage"></photo-item>
 
     </div>
     <!-- my main.js -->

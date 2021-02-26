@@ -6,8 +6,9 @@ const app = Vue.createApp({
                 {image: "./images/2.jpg", text: "Khumbu Valley, Nepal", heart: false},
                 {image: "./images/3.jpg", text: "Waipi'o Valley, Hawaii", heart: false}
             ],
+            index: 0,
             search: false,
-            fullImage: false,
+            fullimage: false,
             backup: [
                 {image: "./images/1.jpg", text: "Geysers Valley, Russia", heart: false},
                 {image: "./images/2.jpg", text: "Khumbu Valley, Nepal", heart: false},
@@ -29,6 +30,12 @@ const app = Vue.createApp({
                     return c.text.toLowerCase().includes(input.toLowerCase())
                 })
             }
+        },
+        setIndex(index) {
+            this.index = index;
+        },
+        toggleFullImage(bool) {
+            this.fullimage = bool;
         }
     },
     computed: {
