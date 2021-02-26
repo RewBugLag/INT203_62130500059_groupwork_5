@@ -21,10 +21,14 @@ app.component('photo-search', {
     },
     methods: {
         toggleSearch() {
+            // clear input
+            this.input = ''
             this.$emit('toggle-search')
+            // reset result
+            this.$emit('search-picture', '')
         },
         searchPicture() {
-            this.$emit('search-picture')
+            this.$emit('search-picture', this.input)
         }
     }
 })
