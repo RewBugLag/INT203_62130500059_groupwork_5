@@ -1,4 +1,4 @@
-const app = {
+const app = Vue.createApp({
     data() {
         return {
             conts: [
@@ -8,8 +8,6 @@ const app = {
             ],
             search: false,
             fullImage: false,
-            index: 0,
-            input: '',
             backup: [
                 {image: "./images/1.jpg", text: "Geysers Valley, Russia", heart: false},
                 {image: "./images/2.jpg", text: "Khumbu Valley, Nepal", heart: false},
@@ -23,10 +21,14 @@ const app = {
         },
         toggleSearch() {
             this.search = !this.search;
-            this.input = '';
         },
-        setIndex(index) {
-            this.index = index;
+        searchPicture(input) {
+            this.conts = this.backup
+            if (input) {
+                return this.conts = this.conts.filter(c => {
+                    return c.text.toLowerCase().includes(input.toLowerCase())
+                })
+            }
         }
     },
     computed: {
@@ -35,16 +37,6 @@ const app = {
         },
         countHeart() {
             return this.conts.filter( c => c.heart ).length;
-        },
-        searchPicture() {
-            this.conts = this.backup
-            if (this.input) {
-                return this.conts = this.conts.filter(c => {
-                    return c.text.toLowerCase().includes(this.input.toLowerCase())
-                })
-            }
         }
     }
-}
-
-Vue.createApp(app).mount('#app')
+})
